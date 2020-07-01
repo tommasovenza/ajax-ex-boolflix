@@ -8,16 +8,23 @@ $(document).ready(function() {
 
   // evento click
   $(document).on('click', '#btn-ricerca', function() {
-
+    
+    // svuota la ricerca all'interno dell'html quando riclicco sul bottone
+    $('#stampa-ul').text('');
+    
     var valoreInput = $('#ricerca-film').val();
 
     stampaFilm(valoreInput);
 
+    // svuota il campo ricerca al click
+    $('#ricerca-film').val('');
   });
 
 }); // end document ready
 
-function stampaFilm(arrayRicerca) {
+
+// la funzione che stampa i film
+function stampaFilm(queryRicerca) {
 
   $.ajax( {
 
@@ -26,7 +33,7 @@ function stampaFilm(arrayRicerca) {
 
     data: {
       api_key: 'e12dca5dd96a7799461651a590256acb',
-      query: arrayRicerca,
+      query: queryRicerca,
       language: 'it-IT'
     },
 
@@ -59,8 +66,9 @@ function stampaFilm(arrayRicerca) {
         };
   
         var html = template(context);
-  
+        
         $('#stampa-ul').append(html);
+        
       }
 
     },
