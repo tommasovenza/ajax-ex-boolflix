@@ -23,6 +23,27 @@ $(document).ready(function() {
 }); // end document ready
 
 
+// evento pressione tasto input
+$(document).keypress(function (event) {
+
+  var inputKeypress = $("#input").val();
+
+  if ((event.which == 13) && (inputKeypress != '')) {
+   
+   // svuota la ricerca all'interno dell'html quando riclicco sul bottone
+   $('#stampa-ul').text('');
+    
+   var valoreInput = $('#ricerca-film').val();
+
+   stampaFilm(valoreInput);
+
+   // svuota il campo ricerca al click
+   $('#ricerca-film').val('');
+
+  }
+  });
+
+
 // la funzione che stampa i film
 function stampaFilm(queryRicerca) {
 
