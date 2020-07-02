@@ -12,7 +12,7 @@ $(document).ready(function () {
     var valoreInput = $('#ricerca-film').val();
 
     stampaFilm(valoreInput);
-
+    stampaSerieTv(valoreInput);
   });
 
 }); // end document ready
@@ -28,7 +28,7 @@ $(document).keypress(function (event) {
     var valoreInput = $('#ricerca-film').val();
 
     stampaFilm(valoreInput);
-
+    stampaSerieTv(valoreInput);
   }
 });
 
@@ -63,7 +63,7 @@ function stampaFilm(queryRicerca) {
       language: 'it-IT'
     },
 
-    success: function(data) {
+    success: function (data) {
 
       var risultatoRicerca = data.results;
 
@@ -80,65 +80,100 @@ function stampaFilm(queryRicerca) {
 function generaFilm(arrayRicerca) {
 
   var source = $('#film-template').html();
-      var template = Handlebars.compile(source);
+  var template = Handlebars.compile(source);
 
-      for (var i = 0; i < arrayRicerca.length; i++) {
+  for (var i = 0; i < arrayRicerca.length; i++) {
 
-        var filmSingolo = arrayRicerca[i];
+    var filmSingolo = arrayRicerca[i];
 
-        var titolo = filmSingolo.title;
-        var titoloOriginale = filmSingolo.original_title;
-        var linguaOriginale = filmSingolo.original_language;
-        var votoMedio = filmSingolo.vote_average;
+    var titolo = filmSingolo.title;
+    var titoloOriginale = filmSingolo.original_title;
+    var linguaOriginale = filmSingolo.original_language;
+    var votoMedio = filmSingolo.vote_average;
+    var titoloSerieTv = filmSingolo.name;
+    var titoloOriginaleSerieTv = filmSingolo.original_name;
+    var votoStella = creaStelle(votoMedio);
 
-        var votoStella = arrotondaNumero(votoMedio);
 
-        if ( votoStella === 1) {
-          var stampaStella = '<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
-        } else if (votoStella === 2) {
-          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">'
-        } else if (votoStella === 3) {
-          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
-        } else if (votoStella === 4) {
-          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
-        } else if (votoStella === 5) {
-          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>'
-        };
-        
-        
-        var context = {
-          title: titolo,
-          original_language: linguaOriginale,
-          original_title: titoloOriginale,
-          vote_average: stampaStella
-        };
+    var context = {
 
-        var html = template(context);
+      title: titolo,
+      original_language: creaLingua(linguaOriginale),
+      original_title: titoloOriginale,
+      vote_average: votoStella,
+      name: titoloSerieTv,
+      original_name: titoloOriginaleSerieTv
 
-        $('#stampa-ul').append(html);
+    };
 
-      }
+    var html = template(context);
+
+    $('#stampa-ul').append(html);
+
+  }
 }
 
-function arrotondaNumero(numero) {
 
-  var arrotondato = Math.ceil(numero);
+function creaStelle(voto) {
 
-  var stella = arrotondato / 2;
+  voto = Math.ceil(voto / 2);
 
-  if(stella % 2 != 0) {
+  var stelle = '';
+  for (var i = 1; i <= 5; i++) {
 
-     var test = Math.ceil(stella);
-
-     return test;  
-
-  }  else if (stella == 0) { 
-     
-    return test = 'senza voto';
-
-  } 
-   else {
-
-    return stella;
+    if (i <= voto) {
+      stelle += '<i class="fas fa-star"></i>';
+    } else {
+      stelle += '<i class="far fa-star"></i>';
+    }
   }
+
+  return stelle;
+
+}
+
+function creaLingua(linguaOriginale) {
+
+  var bandiere = ['en', 'it'];
+
+  if (bandiere.includes(linguaOriginale)) {
+
+    return '<img src="img/' + linguaOriginale + '.png">'
+
+  } else {
+
+    return linguaOriginale;
+  }
+}
+
+// la funzione che stampa i film
+function stampaSerieTv(queryRicerca) {
+
+  // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
+  // e del click sul bottone
+  reset();
+
+  $.ajax({
+
+    url: "https://api.themoviedb.org/3/search/tv",
+    method: "GET",
+
+    data: {
+      api_key: 'e12dca5dd96a7799461651a590256acb',
+      query: queryRicerca,
+      language: 'it-IT'
+    },
+
+    success: function (data) {
+
+      var risultatoRicerca = data.results;
+
+      generaFilm(risultatoRicerca);
+
+    },
+
+    error: function () {
+      alert('qualcosa non va');
+    }
+  }); // end chiamata ajax
 }
