@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- font awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+    <!-- handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
+    <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
     <title>Milestone 1 - Boolfix</title>
 </head>
@@ -30,11 +33,10 @@
         <li class="titolo"> Titolo: {{ title }} </li>
         <li class="titolo-originale"> Titolo originale: {{ original_title }} </li>
         <li class="lingua-originale"> Lingua originale: {{ original_language }} </li>
-        <li class="voto-medio"> Voto medio: {{ vote_average }} </li>
+        <li class="voto-medio"> Voto medio: {{{ vote_average }}} </li>
         <br>
 
     </script>
-
     <!-- fine template handlebars -->
 
     <!-- jQuery -->

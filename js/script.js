@@ -93,12 +93,24 @@ function generaFilm(arrayRicerca) {
 
         var votoStella = arrotondaNumero(votoMedio);
 
+        if ( votoStella === 1) {
+          var stampaStella = '<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+        } else if (votoStella === 2) {
+          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">'
+        } else if (votoStella === 3) {
+          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+        } else if (votoStella === 4) {
+          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
+        } else if (votoStella === 5) {
+          stampaStella = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>'
+        };
+        
         
         var context = {
           title: titolo,
           original_language: linguaOriginale,
           original_title: titoloOriginale,
-          vote_average: votoStella
+          vote_average: stampaStella
         };
 
         var html = template(context);
@@ -123,7 +135,7 @@ function arrotondaNumero(numero) {
   }  else if (stella == 0) { 
      
     return test = 'senza voto';
-    
+
   } 
    else {
 
