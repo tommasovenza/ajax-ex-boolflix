@@ -118,9 +118,14 @@ function arrotondaNumero(numero) {
 
      var test = Math.ceil(stella);
 
-     return test;
+     return test;  
 
-  } else {
+  }  else if (stella == 0) { 
+     
+    return test = 'senza voto';
+    
+  } 
+   else {
 
     return stella;
   }
