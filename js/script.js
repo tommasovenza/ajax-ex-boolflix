@@ -15,17 +15,17 @@ $(document).ready(function () {
     stampaSerieTv(valoreInput);
   });
 
-  $('#stampa-ul').mouseenter(function() {
+  // $('#stampa-ul').mouseenter(function() {
 
-    $('.wrapper-ul').addClass('active');
+  //   $('.wrapper-ul').addClass('active');
 
-  });
+  // });
 
-  $('#stampa-ul').mouseleave(function() {
+  // $('#stampa-ul').mouseleave(function() {
 
-    $('.wrapper-ul').removeClass('active');
+  //   $('.wrapper-ul').removeClass('active');
 
-  });
+  // });
 
 }); // end document ready
 

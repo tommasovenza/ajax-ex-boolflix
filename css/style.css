@@ -75,7 +75,7 @@ main {
     display: none;
 }
 
-.active {
+.scheda-film:hover .wrapper-ul {
     display: block;
 }
 
