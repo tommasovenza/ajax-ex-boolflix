@@ -94,7 +94,7 @@ function generaFilm(arrayRicerca) {
     var titoloOriginaleSerieTv = filmSingolo.original_name;
     var votoStella = creaStelle(votoMedio);
     var poster = filmSingolo.poster_path;
-    var image = '<img src="https://image.tmdb.org/t/p/w342' + poster + '"/>';
+    var image = '<img src="https://image.tmdb.org/t/p/w342' + poster + '">';
     var info = filmSingolo.overview;
 
     var context = {

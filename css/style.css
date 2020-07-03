@@ -1,5 +1,69 @@
+/* reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+ul li {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+/*  inizio regole generali */
+body {
+    font-family: 'roboto', sans-serif;
+    font-size: 12px;
+}
+/* img {
+    width: 100%;
+} */
+/* fine regole generali */
+
+ /* clearfix */
+.clearfix::after {
+    display: table;
+    clear: both;
+    content: '';
+}
+/*  header  */
+header {
+    height: 85px;
+    background-color: #e3e3e3;
+    padding: 15px 30px;
+}
+
+header img {
+    width: 150px;
+    float: left;
+}
+
+header .input {
+    float: right;
+   line-height: 30px;
+   padding: 10px;
+}
+/*  fine header */
+#ricerca-film {
+    padding: 5px;
+}
+/*  inizio main */
+main {
+    background-color: #000;
+    color: #fff;
+}
+
+.wrapper #stampa-ul {
+    display: flex;
+    overflow: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.scheda-film {
+    width: 342px;
+}
+
+
+
+
