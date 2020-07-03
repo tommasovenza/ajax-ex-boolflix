@@ -15,6 +15,18 @@ $(document).ready(function () {
     stampaSerieTv(valoreInput);
   });
 
+  $('#stampa-ul').mouseenter(function() {
+
+    $('.wrapper-ul').addClass('active');
+
+  });
+
+  $('#stampa-ul').mouseleave(function() {
+
+    $('.wrapper-ul').removeClass('active');
+
+  });
+
 }); // end document ready
 
 
