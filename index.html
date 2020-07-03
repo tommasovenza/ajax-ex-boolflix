@@ -11,30 +11,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
-    <title>Milestone 1 - Boolfix</title>
+    <title>Boolfix</title>
 </head>
 
 <body>
 
-    <div class="container">
-        <label>Cerca un film</label>
-        <input type="text" id="ricerca-film" value="" placeholder="cerca un film">
-        <button id="btn-ricerca">Cerca</button>
-    </div>
+    <header>
+        <div class="container">
+            <label>Cerca un film</label>
+            <input type="text" id="ricerca-film" value="" placeholder="cerca un film">
+            <button id="btn-ricerca"></button>
+        </div>
+    </header>
 
     <!-- lista film -->
     <ul id="stampa-ul">
-    
+
     </ul>
 
-   
+
     <!-- template handlebars -->
     <script id="film-template" type="text/x-handlebars-template">
+
+        <div class="wrapper-scheda-film">
+            {{{ poster_path }}}
+            <li class="titolo"> Titolo: {{ title }}{{name}} </li>
+            <li class="titolo-originale"> Titolo originale: {{ original_title }}{{original_name}} </li>
+            <li class="lingua-originale"> Lingua originale: {{{ original_language }}} </li>
+            <li class="voto-medio"> Voto medio: {{{ vote_average }}} </li>
+            <li class="overview"> Info: {{ overview }}</li>
+        </div>
         
-        <li class="titolo"> Titolo: {{ title }}{{name}} </li>
-        <li class="titolo-originale"> Titolo originale: {{ original_title }}{{original_name}} </li>
-        <li class="lingua-originale"> Lingua originale: {{{ original_language }}} </li>
-        <li class="voto-medio"> Voto medio: {{{ vote_average }}} </li>
         <br>
         
     </script>

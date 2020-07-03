@@ -93,7 +93,9 @@ function generaFilm(arrayRicerca) {
     var titoloSerieTv = filmSingolo.name;
     var titoloOriginaleSerieTv = filmSingolo.original_name;
     var votoStella = creaStelle(votoMedio);
-
+    var poster = filmSingolo.poster_path;
+    var image = '<img src="https://image.tmdb.org/t/p/w342' + poster + '"/>';
+    var info = filmSingolo.overview;
 
     var context = {
 
@@ -102,8 +104,9 @@ function generaFilm(arrayRicerca) {
       original_title: titoloOriginale,
       vote_average: votoStella,
       name: titoloSerieTv,
-      original_name: titoloOriginaleSerieTv
-
+      original_name: titoloOriginaleSerieTv,
+      poster_path: image,
+      overview: info
     };
 
     var html = template(context);
