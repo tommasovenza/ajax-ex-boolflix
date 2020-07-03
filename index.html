@@ -46,16 +46,18 @@
             <!-- lista film -->
             {{{ poster_path }}}
 
-            <div class="wrapper-ul">
-                <ul>
-                    <li class="titolo"> Titolo: {{ title }}{{name}} </li>
-                    <li class="titolo-originale"> Titolo originale: {{ original_title }}{{original_name}} </li>
-                    <li class="lingua-originale"> Lingua originale: {{{ original_language }}} </li>
-                    <li class="voto-medio"> Voto medio: {{{ vote_average }}} </li>
-                    <li class="overview"> Info: {{ overview }}</li>
-                </ul> 
+            <div class="overlay">
+                <div class="wrapper-ul">
+                    <ul>
+                        <li class="titolo"> Titolo: {{ title }}{{name}} </li>
+                        <li class="titolo-originale"> Titolo originale: {{ original_title }}{{original_name}} </li>
+                        <li class="lingua-originale"> Lingua originale: {{{ original_language }}} </li>
+                        <li class="voto-medio"> Voto medio: {{{ vote_average }}} </li>
+                        <li class="overview"> Info: {{ overview }}</li>
+                    </ul> 
+                </div>
             </div>
-              
+        
         </div>
 
     </script>

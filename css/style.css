@@ -6,26 +6,28 @@
 }
 
 ul li {
-    text-decoration: none;
     list-style-type: none;
+    display: inline-block;
 }
 
 /*  inizio regole generali */
 body {
     font-family: 'roboto', sans-serif;
-    font-size: 12px;
+    font-size: 16px;
 }
+
 /* img {
     width: 100%;
 } */
 /* fine regole generali */
 
- /* clearfix */
+/* clearfix */
 .clearfix::after {
     display: table;
     clear: both;
     content: '';
 }
+
 /*  header  */
 header {
     height: 85px;
@@ -40,13 +42,15 @@ header img {
 
 header .input {
     float: right;
-   line-height: 30px;
-   padding: 10px;
+    line-height: 30px;
+    padding: 10px;
 }
+
 /*  fine header */
 #ricerca-film {
     padding: 5px;
 }
+
 /*  inizio main */
 main {
     background-color: #000;
@@ -61,10 +65,42 @@ main {
 }
 
 .scheda-film {
-    width: 342px;
-    text-align: center;
-    margin: 20px;  
-    position: relative; 
+    margin: 20px;
+    position: relative;
+    height: 100%;
+    overflow: auto;
+}
+
+.scheda-film img {
+    display: block;
+    overflow: auto;
+    /* width: 100%; */
+    /* height: auto; */
+}
+
+.scheda-film .lingua-originale {
+    display: flex;
+}
+
+.scheda-film .lingua-originale img {
+    margin-left: 10px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.scheda-film:hover .overlay {
+    opacity: 1;
 }
 
 .wrapper-ul {
@@ -72,17 +108,9 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
+    padding: 10px;
+    width: 100%;
+    overflow: hidden;
 }
-
-.scheda-film:hover .wrapper-ul {
-    display: block;
-}
-
-
-
-
-
-
 
 
