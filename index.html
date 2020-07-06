@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css">
-    <title>Boolfix</title>
+    <title>Boolflix</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
             <div class="input">
                 <!-- <label>Cerca un film</label> -->
                 <input type="text" id="ricerca-film" value="" placeholder="cerca un film">
-                <button id="btn-ricerca">Cerca</button>
+                <!-- <button id="btn-ricerca">Cerca</button> -->
             </div>
         </div>
     </header>
@@ -62,6 +62,15 @@
 
     </script>
     <!-- fine template handlebars -->
+
+ 
+    <!-- errore handlebars -->
+    <script id="error-message-template" type="text/x-handlebars-template">
+
+        <p class="error"> {{ message }} </p>
+
+    </script>
+    <!-- fine template errore handlebars -->
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

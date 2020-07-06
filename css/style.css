@@ -121,4 +121,13 @@ main {
     overflow: auto;
 }
 
+/* messaggio di errore */
 
+.error {
+    padding: 10px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -11,12 +11,15 @@ $(document).ready(function () {
 
     var valoreInput = $('#ricerca-film').val();
 
-    // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
-    // e del click sul bottone
-    reset();
+    if (valoreInput != '') {
+      // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
+      // e del click sul bottone
+      reset();
 
-    stampaFilmOSerieTv(valoreInput, 'movies');
-    stampaFilmOSerieTv(valoreInput, 'tv');
+      stampaFilmOSerieTv(valoreInput, 'movies');
+      stampaFilmOSerieTv(valoreInput, 'tv');
+    }
+
 
   });
 
@@ -25,12 +28,9 @@ $(document).ready(function () {
 // evento pressione tasto input
 $(document).keypress(function (event) {
 
-  var inputKeypress = $("#input").val();
+  var valoreInput = $('#ricerca-film').val();
 
-
-  if ((event.which == 13) && (inputKeypress != '')) {
-
-    var valoreInput = $('#ricerca-film').val();
+  if ((event.which == 13) && (valoreInput != '')) {
 
     // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
     // e del click sul bottone
@@ -80,9 +80,22 @@ function stampaFilmOSerieTv(queryRicerca, type) {
       success: function (data) {
 
         var risultatoRicerca = data.results;
+        
+        if (risultatoRicerca.length >  0) {
 
-        generaFilm(risultatoRicerca);
+          generaFilm(risultatoRicerca);
 
+        } else {
+
+          if( type === 'movies') {
+            var messaggioDiErrore = ' Nessun film trovato per la chiave di ricerca ';
+          } else {
+            messaggioDiErrore = ' Nessuna serie tv trovata per la chiave di ricerca ';
+          }
+
+          stampaErrori(messaggioDiErrore);
+        }
+        
       },
 
       error: function () {
@@ -128,6 +141,23 @@ function generaFilm(arrayRicerca) {
     $('#stampa-ul').append(html);
 
   }
+}
+
+// funzione che avverte quando non ci sono risultati alla query immessa nel campo search
+// message è una stringa che contiene il messaggio di errore da stampare 
+// return: niente, scrivo solo il messaggio a schermo
+function stampaErrori(messaggio) {
+  // handlebars
+  var source = $('#error-message-template').html();
+  var template = Handlebars.compile(source);
+
+  var context = {
+    message: messaggio
+  };
+
+  var html = template(context);
+
+  $('#stampa-ul').append(html);
 }
 
 
