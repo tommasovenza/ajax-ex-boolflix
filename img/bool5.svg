@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="151px" height="28px" viewBox="0 0 151 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-164.000000, -96.000000)">
+            <g id="Group" transform="translate(164.000000, 89.000000)">
+                <text id="BOOLFLIX" font-family="ProximaNova-Bold, Proxima Nova" font-size="30" font-weight="bold" letter-spacing="-2" fill="#FF0000">
+                    <tspan x="20" y="28">BOOLFLIX</tspan>
+                </text>
+                <polygon id="Path-2" fill="#000000" points="0 28.5201632 84 26 150.961181 28.5201632 77.492346 34.2846825"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
