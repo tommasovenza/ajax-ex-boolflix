@@ -10,38 +10,34 @@ $(document).ready(function () {
   $(document).on('click', '#btn-ricerca', function () {
 
     var valoreInput = $('#ricerca-film').val();
-    
 
-    stampaFilm(valoreInput, 'movies');
-    stampaFilm(valoreInput, 'tv');
+    // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
+    // e del click sul bottone
+    reset();
+
+    stampaFilmOSerieTv(valoreInput, 'movies');
+    stampaFilmOSerieTv(valoreInput, 'tv');
+
   });
 
-  // $('#stampa-ul').mouseenter(function() {
-
-  //   $('.wrapper-ul').addClass('active');
-
-  // });
-
-  // $('#stampa-ul').mouseleave(function() {
-
-  //   $('.wrapper-ul').removeClass('active');
-
-  // });
-
 }); // end document ready
-
 
 // evento pressione tasto input
 $(document).keypress(function (event) {
 
   var inputKeypress = $("#input").val();
 
+
   if ((event.which == 13) && (inputKeypress != '')) {
 
     var valoreInput = $('#ricerca-film').val();
 
-    stampaFilm(valoreInput, 'movies');
-    stampaFilm(valoreInput, 'tv');
+    // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
+    // e del click sul bottone
+    reset();
+
+    stampaFilmOSerieTv(valoreInput, 'movies');
+    stampaFilmOSerieTv(valoreInput, 'tv');
   }
 });
 
@@ -59,19 +55,17 @@ function reset() {
 
 
 // la funzione che stampa i film
-function stampaFilm(queryRicerca, type) {
+function stampaFilmOSerieTv(queryRicerca, type) {
 
-  // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
-  // e del click sul bottone
-  reset();
-  
+
   if (type === 'movies') {
     var url = 'https://api.themoviedb.org/3/search/movie';
   } else {
     url = 'https://api.themoviedb.org/3/search/tv';
   }
-
+  // chiamata ajax
   $.ajax(
+    // oggetto
     {
       url: url,
 
@@ -81,20 +75,20 @@ function stampaFilm(queryRicerca, type) {
         api_key: 'e12dca5dd96a7799461651a590256acb',
         query: queryRicerca,
         language: 'it-IT'
-    },
+      }, // fine oggetto
 
-    success: function (data) {
+      success: function (data) {
 
-      var risultatoRicerca = data.results;
+        var risultatoRicerca = data.results;
 
-      generaFilm(risultatoRicerca);
+        generaFilm(risultatoRicerca);
 
-    },
+      },
 
-    error: function () {
-      alert('qualcosa non va');
-    }
-  }); // end chiamata ajax
+      error: function () {
+        alert('qualcosa non va');
+      }
+    }); // end chiamata ajax
 }
 
 function generaFilm(arrayRicerca) {
@@ -168,35 +162,3 @@ function creaLingua(linguaOriginale) {
     return linguaOriginale;
   }
 }
-
-// // la funzione che stampa i film
-// function stampaSerieTv(queryRicerca) {
-
-//   // funzione che fa il reset di html e del campo imput alla pressione del tasto invio 
-//   // e del click sul bottone
-//   reset();
-
-//   $.ajax({
-
-//     url: "https://api.themoviedb.org/3/search/tv",
-//     method: "GET",
-
-//     data: {
-//       api_key: 'e12dca5dd96a7799461651a590256acb',
-//       query: queryRicerca,
-//       language: 'it-IT'
-//     },
-
-//     success: function (data) {
-
-//       var risultatoRicerca = data.results;
-
-//       generaFilm(risultatoRicerca);
-
-//     },
-
-//     error: function () {
-//       alert('qualcosa non va');
-//     }
-//   }); // end chiamata ajax
-// }

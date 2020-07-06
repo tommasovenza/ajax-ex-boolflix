@@ -44,17 +44,21 @@ header .input {
     padding: 10px;
 }
 
-/*  fine header */
 #ricerca-film {
     padding: 5px;
 }
+#btn-ricerca {
+    padding: 5px;
+}
+
+/*  fine header */
 
 /*  inizio main */
 main {
     background-color: #000;
     color: #fff;
-    /* height: 100vh;
-    overflow: auto; */
+    height: 100vh;
+    overflow: auto;
 }
 
 .wrapper #stampa-ul {
